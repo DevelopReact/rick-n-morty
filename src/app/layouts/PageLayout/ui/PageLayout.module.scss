@@ -1,0 +1,10 @@
+@import '../../../styles/variables/backgroundColor.scss';
+@import '../../../styles/variables/fontColor.scss';
+@import '../../../styles/mixins/mixins.scss';
+
+.PageLayout {
+	min-height: 100vh;
+	@include FlexDirection(space-between);
+	background-color: $mainBackgroundColor;
+	color: $secondaryTextColor;
+}

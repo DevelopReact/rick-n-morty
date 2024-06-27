@@ -1,0 +1,21 @@
+@import '@/app/styles/variables/backgroundColor.scss';
+@import '@/app/styles/variables/fontColor.scss';
+@import '@/app/styles/mixins/mixins.scss';
+
+.IconStatus {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+}
+
+.AliveBC {
+	background-color: $aliveColor
+}
+
+.DeadBC {
+	background-color: $accentColor
+}
+
+.unknownBC {
+	background-color: $unknownColor
+}

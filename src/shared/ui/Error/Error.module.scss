@@ -1,0 +1,8 @@
+@import "@/app/styles/variables/fontColor.scss";
+@import '@/app/styles/mixins/mixins.scss';
+
+.Error {
+	width: 100%;
+	@include FlexContainer;
+	color: $accentTextColor
+}

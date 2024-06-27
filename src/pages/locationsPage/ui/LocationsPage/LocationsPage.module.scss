@@ -1,0 +1,26 @@
+@import '@/app/styles/variables/backgroundColor.scss';
+@import '@/app/styles/variables/fontColor.scss';
+@import '@/app/styles/mixins/mixins.scss';
+
+.LocationsPage {
+	width: 80%;
+}
+
+.contentLocationPage {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 30px;
+}
+
+.titleLocationPage {
+	width: 100%;
+	@include FlexContainer();
+	padding: 50px 0;
+	font-size: 25px;
+	cursor: pointer;
+
+	svg:hover {
+		fill: $accentColor
+	}
+}

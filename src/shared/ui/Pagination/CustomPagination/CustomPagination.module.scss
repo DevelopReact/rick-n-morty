@@ -1,0 +1,14 @@
+@import '@/app/styles/variables/backgroundColor.scss';
+@import '@/app/styles/variables/fontColor.scss';
+@import '@/app/styles/mixins/mixins.scss';
+
+.CustomPagination {
+	@include FlexContainer();
+	gap: 30px;
+	padding: 50px 0;
+}
+
+.countPage {
+	@include FlexContainer();
+	gap: 10px;
+}

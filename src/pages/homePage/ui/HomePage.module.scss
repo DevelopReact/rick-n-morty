@@ -1,0 +1,24 @@
+@import '@/app/styles/variables/backgroundColor.scss';
+@import '@/app/styles/variables/fontColor.scss';
+@import '@/app/styles/mixins/mixins.scss';
+
+.HomePage {
+	width: 80%;
+	@include FlexContainer()
+}
+
+.iconHome{
+	path:hover  {
+		fill: $accentColor
+	}
+}
+
+.categoryButtons {
+	width: 100%;
+	@include FlexDirection();
+	gap: 40px;
+
+	button {
+		width: 100%;
+	}
+}

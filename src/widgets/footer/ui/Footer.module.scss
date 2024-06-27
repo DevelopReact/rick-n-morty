@@ -1,0 +1,11 @@
+@import '@/app/styles/variables/backgroundColor.scss';
+@import '@/app/styles/variables/fontColor.scss';
+@import '@/app/styles/mixins/mixins.scss';
+
+.Footer {
+  width: 100%;
+  height: 50px;
+  @include FlexDirection();
+  border-top: 2px solid $greyOpacityColor;
+  color: $secondaryTextColor;
+}

@@ -1,0 +1,28 @@
+@import '@/app/styles/variables/backgroundColor.scss';
+@import '@/app/styles/variables/fontColor.scss';
+@import '@/app/styles/mixins/mixins.scss';
+
+.EpisodeIdPage {
+	width: 80%;
+	@include FlexDirection()
+}
+
+.titleEpisodeCard {
+	width: 100%;
+	@include FlexContainer();
+	padding: 50px 0;
+	font-size: 25px;
+
+	svg:hover {
+		fill: $accentColor;
+		cursor: pointer;
+	}
+}
+
+.charactersList {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 30px;
+	padding-bottom: 50px;
+}

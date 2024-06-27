@@ -1,0 +1,28 @@
+@import '@/app/styles/variables/backgroundColor.scss';
+@import '@/app/styles/variables/fontColor.scss';
+@import '@/app/styles/mixins/mixins.scss';
+
+.Pagination {
+	@include FlexContainer();
+	gap: 30px;
+	padding-bottom: 50px;
+}
+
+.countPage {
+	@include FlexContainer();
+	gap: 10px;
+}
+
+.pageLink,
+.prevButton,
+.nextButton {
+cursor: pointer;
+}
+
+.active {
+	color: $accentTextColor;
+}
+
+.disabled {
+	color: $greyOpacityColor;
+}
