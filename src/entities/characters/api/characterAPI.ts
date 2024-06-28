@@ -9,32 +9,21 @@ const characterAPI = jsonPlaceholderAPI.injectEndpoints({
         url: `/character/?page=${page}`,
         method: 'GET'
       }),
-      providesTags: (result, error, arg) =>
-        result
-          ? [
-              ...result.results.map(({ id }) => ({
-                type: 'Character' as const,
-                id
-              })),
-              'Character'
-            ]
-          : ['Character']
+      providesTags: [{ type: 'Character', id: 'LIST' }]
     }),
     getCharacterId: build.query<ICharacterId, number>({
       query: (id) => ({
         url: `/character/${id}`,
         method: 'GET'
       }),
-      providesTags: (result, error, id) => {
-        return [{ type: 'Character', id }];
-      }
+      providesTags: (_, __, id) => [{ type: 'Character', id: id }]
     }),
     getCharacterMulti: build.query<ICharacterId, number[]>({
       query: (id) => ({
         url: `/character/${[id]}`,
         method: 'GET'
       }),
-      providesTags: ['Character']
+      providesTags: [{ type: 'Character', id: 'LIST_ID' }]
     })
   })
 });

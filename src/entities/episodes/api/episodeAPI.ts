@@ -10,21 +10,21 @@ const episodeAPI = jsonPlaceholderAPI.injectEndpoints({
         url: `/episode/?page=${page}`,
         method: 'GET'
       }),
-      providesTags: ['Episode']
+      providesTags: [{ type: 'Episode', id: 'LIST' }]
     }),
     getEpisodeById: build.query<IMultiEpisodes, number>({
       query: (id) => ({
         url: `/episode/${id}`,
         method: 'GET'
       }),
-      providesTags: ['Episode']
+      providesTags: (_, __, id) => [{ type: 'Episode', id: id }]
     }),
     getEpisodeMultiple: build.query<IMultiEpisodes, number[]>({
       query: (id) => ({
         url: `/episode/${[id]}`,
         method: 'GET'
       }),
-      providesTags: ['Episode']
+      providesTags: [{ type: 'Episode', id: 'LIST_ID' }]
     })
   })
 });

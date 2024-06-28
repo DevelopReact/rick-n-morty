@@ -10,21 +10,21 @@ const locationAPI = jsonPlaceholderAPI.injectEndpoints({
         url: `/location/?page=${page}`,
         method: 'GET'
       }),
-      providesTags: ['Location']
+      providesTags: [{ type: 'Location', id: 'LIST' }]
     }),
     getLocationId: build.query<ILocationId, number>({
       query: (id) => ({
         url: `/location/${id}`,
         method: 'GET'
       }),
-      providesTags: ['Location']
+      providesTags: (_, __, id) => [{ type: 'Location', id: id }]
     }),
     getLocationMultiple: build.query<ILocationId, number[]>({
       query: (id) => ({
         url: `/location/${[id]}`,
         method: 'GET'
       }),
-      providesTags: ['Location']
+      providesTags: [{ type: 'Location', id: 'LIST_ID' }]
     })
   })
 });
