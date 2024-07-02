@@ -1,8 +1,16 @@
 // react
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+//actions
+import { filterCharacterAction } from '../../model/slice/characterSlice';
 //ui
 import { IconStatus } from '@/shared/ui';
+//constants
+import {
+  jsonPlaceholderBaseURL,
+  scrollUpFunction
+} from '@/shared/libs/constants';
 // styles
 import styles from './CharacterCard.module.scss';
 
@@ -33,6 +41,34 @@ export const CharacterCard: FC<CharacterCardProps> = ({
   status,
   location
 }) => {
+  const dispatch = useDispatch();
+
+  const [filter, setFilter] = useState(true);
+
+  const locationId = location?.url.replace(
+    `${jsonPlaceholderBaseURL}/location/`,
+    ''
+  );
+
+  const originId = origin?.url.replace(
+    `${jsonPlaceholderBaseURL}/location/`,
+    ''
+  );
+
+  const filterByStatus = () => {
+    setFilter(!filter);
+
+    dispatch(
+      filterCharacterAction.filterCharacter({
+        isFiltered: filter,
+        status: status,
+        gender: gender
+      })
+    );
+
+    scrollUpFunction();
+  };
+
   return (
     <div className={styles.Card} key={id}>
       <figure className={styles.imgCard}>
@@ -47,17 +83,19 @@ export const CharacterCard: FC<CharacterCardProps> = ({
         <div className={styles.statusCard}>
           <IconStatus backgroundColor={status} />
           <span>
-            {species} - {status}
+            {species} - <a onClick={filterByStatus}>{status}</a>
           </span>
         </div>
         <div className={styles.infoCard}>
-          First seen in: <span>{origin?.name}</span>
+          First seen in:{' '}
+          <Link to={`/location/${originId}`}>{origin?.name}</Link>
         </div>
         <div className={styles.infoCard}>
-          Last known location: <span>{location?.name}</span>
+          Last known location:{' '}
+          <Link to={`/location/${locationId}`}>{location?.name}</Link>
         </div>
         <div className={styles.infoCard}>
-          Gender: <span>{gender}</span>
+          Gender: <a onClick={filterByStatus}>{gender}</a>
         </div>
       </div>
     </div>

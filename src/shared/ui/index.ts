@@ -4,3 +4,4 @@ export { Error } from './Error/Error';
 export { IconStatus } from './IconStatus/IconStatus';
 export { Pagination } from './Pagination/LibsPagination/Pagination';
 export { CustomPagination } from './Pagination/CustomPagination/CustomPagination';
+export { FilterToggle } from './FilterToggle/FilterToggle.tsx';

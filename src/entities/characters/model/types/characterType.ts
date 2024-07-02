@@ -49,3 +49,9 @@ export interface ICharacterId {
   url?: string;
   created?: string;
 }
+
+export interface ICharacterFilter {
+  isFiltered: boolean;
+  status: string;
+  gender: string;
+}

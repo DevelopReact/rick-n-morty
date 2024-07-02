@@ -1,6 +1,10 @@
 import { jsonPlaceholderAPI } from '@/shared/api/jsonPlaceholderAPI';
 //types
-import { ICharacter, ICharacterId } from '../model/types/characterType';
+import {
+  ICharacter,
+  ICharacterFilter,
+  ICharacterId
+} from '../model/types/characterType';
 
 const characterAPI = jsonPlaceholderAPI.injectEndpoints({
   endpoints: (build) => ({
@@ -18,6 +22,15 @@ const characterAPI = jsonPlaceholderAPI.injectEndpoints({
       }),
       providesTags: (_, __, id) => [{ type: 'Character', id: id }]
     }),
+    getFilterCharacterByStatus: build.query<
+      ICharacter,
+      Partial<ICharacterFilter>
+    >({
+      query: ({ status, gender }) => ({
+        url: `/character/?status=${status}&gender=${gender}`,
+        method: 'GET'
+      })
+    }),
     getCharacterMulti: build.query<ICharacterId, number[]>({
       query: (id) => ({
         url: `/character/${[id]}`,
@@ -31,5 +44,6 @@ const characterAPI = jsonPlaceholderAPI.injectEndpoints({
 export const {
   useGetCharactersQuery,
   useGetCharacterIdQuery,
-  useGetCharacterMultiQuery
+  useGetCharacterMultiQuery,
+  useGetFilterCharacterByStatusQuery
 } = characterAPI;

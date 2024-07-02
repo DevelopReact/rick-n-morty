@@ -26,14 +26,6 @@
 .titleCard {
 	font-size: 20px;
 
-	a {
-		color: $unknownColor;
-		text-decoration: none
-	}
-
-	a:hover {
-		color: $accentTextColor
-	}
 }
 
 .statusCard {
@@ -46,6 +38,13 @@
 	line-height: 25px;
 }
 
-span {
+
+a {
 	color: $unknownColor;
+	text-decoration: none
+}
+
+a:hover {
+	color: $accentTextColor;
+	cursor: pointer;
 }
