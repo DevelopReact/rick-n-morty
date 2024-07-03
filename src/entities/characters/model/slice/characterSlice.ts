@@ -11,7 +11,7 @@ export const characterSlice = createSlice({
   name: 'character',
   initialState: initialState,
   reducers: {
-    filterCharacter(state, action: PayloadAction<ICharacterFilter>) {
+    filterCharacter(_, action: PayloadAction<ICharacterFilter>) {
       return action.payload;
     }
   }
