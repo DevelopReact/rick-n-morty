@@ -6,13 +6,6 @@
 	width: 80%;
 }
 
-.contentLocationPage {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	gap: 30px;
-}
-
 .titleLocationPage {
 	width: 100%;
 	@include FlexContainer();

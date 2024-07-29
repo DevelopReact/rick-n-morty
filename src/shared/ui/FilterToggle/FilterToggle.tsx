@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { filterCharacterAction } from '@/entities/characters/model/slice/characterSlice';
 // styles
 import styles from './FilterToggle.module.scss';
+import { scrollUpFunction } from '@/shared/libs/constants';
 
 interface FilterToggleProps {
   isFiltered: boolean;
@@ -19,15 +20,16 @@ export const FilterToggle: FC<FilterToggleProps> = ({ isFiltered }) => {
         type='checkbox'
         className='toggle'
         checked={isFiltered}
-        onChange={() =>
+        onChange={() => {
+          scrollUpFunction();
           dispatch(
             filterCharacterAction.filterCharacter({
               isFiltered: false,
               status: '',
               gender: ''
             })
-          )
-        }
+          );
+        }}
       />
     </div>
   );

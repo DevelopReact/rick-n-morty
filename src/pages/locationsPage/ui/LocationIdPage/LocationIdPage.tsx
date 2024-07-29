@@ -22,9 +22,8 @@ export const LocationIdPage: FC<LocationIdPageProps> = ({}) => {
   const navigate = useNavigate();
   const [residentsId, setResidentsId] = useState<number[]>([]);
 
-  const { data, isSuccess, isLoading, isError } = useGetLocationIdQuery(
-    Number(locationId)
-  );
+  const { data, isSuccess, isLoading, isError, isFetching } =
+    useGetLocationIdQuery(Number(locationId));
 
   useEffect(() => {
     if (!isSuccess) {
@@ -44,12 +43,13 @@ export const LocationIdPage: FC<LocationIdPageProps> = ({}) => {
     data: residentsData,
     isSuccess: residentsSuccess,
     isLoading: residentsIsLoading,
-    isError: residentsIsError
+    isError: residentsIsError,
+    isFetching: residentsIsFetching
   } = useGetCharacterMultiQuery(residentsId, {
     skip: residentsId.length === 0
   });
 
-  if (isLoading || residentsIsLoading) {
+  if (isLoading || residentsIsLoading || isFetching || residentsIsFetching) {
     return <Loader />;
   }
 

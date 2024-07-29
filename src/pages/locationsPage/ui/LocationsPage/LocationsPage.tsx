@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router';
 //api
 import { useGetLocationsQuery } from '@/entities/locations/api/locationAPI';
 //ui
-import { LocationCard } from '@/entities/locations/ui';
 import { CustomPagination, Error, Loader, Pagination } from '@/shared/ui';
+import { LocationCardList } from '../LocationCardList';
 //assets
 import ArrowLeft from '@/shared/libs/assets/svg/left-finger.svg?react';
 // styles
@@ -18,9 +18,10 @@ export const LocationsPage: FC<LocationsPageProps> = ({}) => {
 
   const [pageNumber, setPageNumber] = useState(1);
 
-  const { data, isLoading, isError } = useGetLocationsQuery(pageNumber);
+  const { data, isLoading, isError, isFetching } =
+    useGetLocationsQuery(pageNumber);
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <Loader />;
   }
 
@@ -39,19 +40,7 @@ export const LocationsPage: FC<LocationsPageProps> = ({}) => {
         setPageNumber={setPageNumber}
         countPages={data! && data.info.pages}
       />
-      <div className={styles.contentLocationPage}>
-        {data?.results.map(({ id, name, dimension, type }) => {
-          return (
-            <LocationCard
-              id={id}
-              key={id}
-              name={name}
-              type={type}
-              dimension={dimension}
-            />
-          );
-        })}
-      </div>
+      <LocationCardList data={data!} />
       <CustomPagination
         pageNumber={pageNumber}
         setPageNumber={setPageNumber}

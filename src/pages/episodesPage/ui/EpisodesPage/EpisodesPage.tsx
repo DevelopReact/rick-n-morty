@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router';
 //api
 import { useGetEpisodesQuery } from '@/entities/episodes/api/episodeAPI';
 //ui
-import { EpisodeCard } from '@/entities/episodes/ui';
 import { CustomPagination, Error, Loader, Pagination } from '@/shared/ui';
+import { EpisodeCardList } from '../EpisodeCardList';
 //assets
 import ArrowLeft from '@/shared/libs/assets/svg/left-finger.svg?react';
 // styles
@@ -18,9 +18,10 @@ export const EpisodesPage: FC<EpisodesPageProps> = ({}) => {
 
   const [pageNumber, setPageNumber] = useState(1);
 
-  const { data, isLoading, isError } = useGetEpisodesQuery(pageNumber);
+  const { data, isLoading, isError, isFetching } =
+    useGetEpisodesQuery(pageNumber);
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <Loader />;
   }
 
@@ -39,19 +40,7 @@ export const EpisodesPage: FC<EpisodesPageProps> = ({}) => {
         setPageNumber={setPageNumber}
         countPages={data! && data.info.pages}
       />
-      <div className={styles.contentEpisodePage}>
-        {data?.results.map(({ id, name, episode, air_date }) => {
-          return (
-            <EpisodeCard
-              id={id}
-              key={id}
-              name={name}
-              episode={episode}
-              air_date={air_date}
-            />
-          );
-        })}
-      </div>
+      <EpisodeCardList data={data!} />
       <CustomPagination
         pageNumber={pageNumber}
         setPageNumber={setPageNumber}

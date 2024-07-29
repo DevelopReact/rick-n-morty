@@ -10,7 +10,6 @@ import {
   useGetFilterCharacterByStatusQuery
 } from '@/entities/characters/api/characterAPI';
 //ui
-import { CharacterCard } from '@/entities/characters';
 import {
   CustomPagination,
   Error,
@@ -18,6 +17,7 @@ import {
   Loader,
   Pagination
 } from '@/shared/ui';
+import { CharacterCardList } from '../CharacterCardList';
 //assets
 import ArrowLeft from '@/shared/libs/assets/svg/left-finger.svg?react';
 // styles
@@ -30,16 +30,22 @@ export const CharactersPage: FC<CharactersPageProps> = ({}) => {
 
   const [pageNumber, setPageNumber] = useState(1);
 
-  const { data, isLoading, isError } = useGetCharactersQuery(pageNumber, {
-    skip: pageNumber === undefined
-  });
+  const { data, isLoading, isError, isFetching } = useGetCharactersQuery(
+    pageNumber,
+    {
+      skip: pageNumber === undefined
+    }
+  );
 
   const { isFiltered, status, gender } = useSelector(getCharacterFilterState);
-
+  {
+    /* //TODO */
+  }
   const {
     data: filteredData,
     isLoading: filteredIsLoading,
-    isError: filteredIsError
+    isError: filteredIsError,
+    isFetching: filteredIsFetching
   } = useGetFilterCharacterByStatusQuery(
     { status, gender },
     {
@@ -47,7 +53,7 @@ export const CharactersPage: FC<CharactersPageProps> = ({}) => {
     }
   );
 
-  if (isLoading || filteredIsLoading) {
+  if (isLoading || filteredIsLoading || isFetching || filteredIsFetching) {
     return <Loader />;
   }
 
@@ -69,23 +75,7 @@ export const CharactersPage: FC<CharactersPageProps> = ({}) => {
         setPageNumber={setPageNumber}
       />
       <FilterToggle isFiltered={isFiltered} />
-      <div className={styles.contentCharacterPage}>
-        {currentData?.results.map(
-          ({ id, name, gender, image, origin, species, status, location }) => (
-            <CharacterCard
-              key={id}
-              id={id}
-              name={name}
-              gender={gender}
-              image={image}
-              origin={origin}
-              species={species}
-              status={status}
-              location={location}
-            />
-          )
-        )}
-      </div>
+      <CharacterCardList currentData={currentData!} />
       <CustomPagination
         countPages={currentData! && currentData.info.pages}
         pageNumber={pageNumber}

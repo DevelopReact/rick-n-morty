@@ -22,9 +22,8 @@ export const EpisodeIdPage: FC<EpisodeIdPageProps> = ({}) => {
   const navigate = useNavigate();
   const [charactersId, setCharactersId] = useState<number[]>([]);
 
-  const { data, isSuccess, isLoading, isError } = useGetEpisodeByIdQuery(
-    Number(episodeId)
-  );
+  const { data, isSuccess, isLoading, isError, isFetching } =
+    useGetEpisodeByIdQuery(Number(episodeId));
 
   useEffect(() => {
     if (!isSuccess) {
@@ -44,12 +43,13 @@ export const EpisodeIdPage: FC<EpisodeIdPageProps> = ({}) => {
     data: charactersData,
     isSuccess: charactersSuccess,
     isLoading: charactersIsLoading,
-    isError: charactersIsError
+    isError: charactersIsError,
+    isFetching: charactersIsFetching
   } = useGetCharacterMultiQuery(charactersId, {
     skip: charactersId.length === 0
   });
 
-  if (isLoading || charactersIsLoading) {
+  if (isLoading || charactersIsLoading || isFetching || charactersIsFetching) {
     return <Loader />;
   }
 

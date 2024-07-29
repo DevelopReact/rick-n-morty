@@ -6,13 +6,6 @@
 	width: 80%;
 }
 
-.contentCharacterPage {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	gap: 30px;
-}
-
 .titleCharacterPage {
 	width: 100%;
 	@include FlexContainer();
