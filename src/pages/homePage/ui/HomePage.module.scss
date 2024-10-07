@@ -3,22 +3,33 @@
 @import '@/app/styles/mixins/mixins.scss';
 
 .HomePage {
-	width: 80%;
-	@include FlexContainer()
+  width: 80%;
+  @include FlexContainer();
 }
 
-.iconHome{
-	path:hover  {
-		fill: $accentColor
-	}
+.iconHome {
+  width: 100%;
+  path:hover {
+    fill: $accentColor;
+  }
 }
 
 .categoryButtons {
-	width: 100%;
-	@include FlexDirection();
-	gap: 40px;
+  width: 100%;
+  @include FlexDirection();
+  gap: 40px;
 
-	button {
-		width: 100%;
-	}
+  button {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .HomePage {
+    @include FlexDirection();
+  }
+
+  .iconHome {
+    height: 500px;
+  }
 }
