@@ -4,41 +4,47 @@
 @import '@/app/styles/fonts/fonts.scss';
 
 .Button {
-	background-color: $greyOpacityColor;
-	color: $secondaryTextColor;
-	border-color: $secondaryTextColor;
-	border-radius: 5px;
-	cursor: pointer;
+  background-color: $greyOpacityColor;
+  color: $secondaryTextColor;
+  border-color: $secondaryTextColor;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .Button:hover {
-	background-color: $mainBackgroundColor;
-	color: $accentTextColor;
+  background-color: $mainBackgroundColor;
+  color: $accentTextColor;
 }
 
 .largeHeight {
-	padding: 20px;
-	font-size: 50px;
+  padding: 20px;
+  font-size: 50px;
 }
 
 .smallHeight {
-	padding: 10px;
-	font-size: 16px;
-	font-weight: 800;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 800;
 }
 
 .rickMortyFF {
-	font-family: 'RickMortyFont', sans-serif;
+  font-family: 'RickMortyFont', sans-serif;
 }
 
 .courierFF {
-	font-family: 'Courier New', Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-.disabledButton{
-	cursor:auto;
-	opacity: .5;
-	background-color: $mainBackgroundColor;
-	color: $accentTextColor;
-	border-color: $accentTextColor;
+.disabledButton {
+  cursor: auto;
+  opacity: 0.5;
+  background-color: $mainBackgroundColor;
+  color: $accentTextColor;
+  border-color: $accentTextColor;
+}
+
+@media screen and (max-width: 420px) {
+  .largeHeight {
+    font-size: 24px;
+  }
 }

@@ -1,9 +1,16 @@
 .Header {
-	width: 100%;
-	height: 50px;
-	padding-top: 10px;
+  width: 100%;
+  height: 50px;
+  padding-top: 10px;
 
-	svg {
-		cursor: pointer;
-	}
+  svg {
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .Header {
+    width: 80%;
+    height: 100px;
+  }
 }

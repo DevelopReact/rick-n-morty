@@ -30,6 +30,16 @@
   }
 
   .iconHome {
-    height: 500px;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .iconHome {
+    height: 200px;
+  }
+
+  .categoryButtons {
+    gap: 20px;
   }
 }
