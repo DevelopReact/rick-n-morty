@@ -3,32 +3,49 @@
 @import '@/app/styles/mixins/mixins.scss';
 
 .Card {
-	width: 400px;
-	height: 200px;
-	background-color: $greyOpacityColor;
-	border-radius: 5px;
-	@include FlexContainer(start);
-	gap: 30px;
-	overflow: hidden;
+  width: 400px;
+  height: 200px;
+  background-color: $greyOpacityColor;
+  border-radius: 5px;
+  @include FlexContainer(start);
+  gap: 30px;
+  overflow: hidden;
 }
 
 .contentCard {
-	height: 100%;
-	padding: 20px 20px;
-	@include FlexDirection(space-between);
-	align-items: start;
+  height: 100%;
+  padding: 20px 20px;
+  @include FlexDirection(space-between);
+  align-items: start;
 }
 
 .titleCard {
-	color: $unknownColor;
-	font-size: 20px;
+  color: $unknownColor;
+  font-size: 20px;
 
-	a {
-		color: $unknownColor;
-		text-decoration: none
-	}
+  a {
+    color: $unknownColor;
+    text-decoration: none;
+  }
 
-	a:hover {
-		color: $accentTextColor
-	}
+  a:hover {
+    color: $accentTextColor;
+  }
+}
+
+@media screen and (max-width: 485px) {
+  .Card {
+    width: 300px;
+    height: 150px;
+    gap: 15px;
+  }
+
+  .contentCard {
+    padding: 0 10px;
+    justify-content: space-around;
+  }
+
+  .titleCard {
+    font-size: 16px;
+  }
 }

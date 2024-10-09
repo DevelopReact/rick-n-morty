@@ -3,54 +3,121 @@
 @import '@/app/styles/mixins/mixins.scss';
 
 @mixin styleLink {
-	a {
-		color: $unknownColor;
-		text-decoration: none
-	}
+  a {
+    color: $unknownColor;
+    text-decoration: none;
+  }
 
-	a:hover {
-		color: $accentTextColor;
-		cursor: pointer;
-	}
+  a:hover {
+    color: $accentTextColor;
+    cursor: pointer;
+  }
 }
 
 .Card {
-	width: 600px;
-	height: 300px;
-	background-color: $greyOpacityColor;
-	border-radius: 5px;
-	@include FlexContainer(start);
-	gap: 30px;
-	overflow: hidden;
+  width: 600px;
+  height: 300px;
+  background-color: $greyOpacityColor;
+  border-radius: 5px;
+  @include FlexContainer(start);
+  gap: 30px;
+  overflow: hidden;
+}
+
+.imgCard {
+  height: 100%;
 }
 
 .imgCard img {
-	display: block;
+  display: block;
 }
 
 .contentCard {
-	height: 100%;
-	padding: 20px 10px;
-	@include FlexDirection(space-between);
-	align-items: start;
+  height: 100%;
+  padding: 20px 10px;
+  @include FlexDirection(space-between);
+  align-items: start;
 }
 
 .titleCard {
-	font-size: 20px;
+  font-size: 20px;
 
-	@include styleLink()
+  @include styleLink();
 }
 
 .statusCard {
-	@include FlexContainer(start);
-	gap: 10px;
+  @include FlexContainer(start);
+  gap: 10px;
 
-	@include styleLink()
+  @include styleLink();
 }
 
 .infoCard {
-	font-size: 16px;
-	line-height: 25px;
+  font-size: 16px;
+  line-height: 25px;
 
-	@include styleLink()
+  @include styleLink();
+}
+
+@media screen and (max-width: 485px) {
+  .Card {
+    width: 300px;
+    height: 150px;
+    gap: 15px;
+  }
+
+  .imgCard img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .contentCard {
+    width: 50%;
+    padding: 0;
+    font-size: 10px;
+  }
+
+  .titleCard,
+  .infoCard {
+    font-size: 1em;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .Card {
+    width: 400px;
+    height: 200px;
+    gap: 15px;
+  }
+
+  .imgCard img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .contentCard {
+    width: 50%;
+    padding: 0;
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .Card {
+    width: 350px;
+    height: 175px;
+    gap: 15px;
+  }
+
+  .imgCard img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .contentCard {
+    width: 50%;
+    padding: 0;
+    font-size: 10px;
+  }
 }

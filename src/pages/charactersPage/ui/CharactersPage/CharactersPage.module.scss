@@ -3,21 +3,27 @@
 @import '@/app/styles/mixins/mixins.scss';
 
 .CharactersPage {
-	width: 80%;
+  width: 80%;
 }
 
 .titleCharacterPage {
-	width: 100%;
-	@include FlexContainer();
-	padding: 50px 0;
-	font-size: 25px;
-	cursor: pointer;
+  width: 100%;
+  @include FlexContainer();
+  padding: 50px 0;
+  font-size: 25px;
+  cursor: pointer;
 
-	svg:hover {
-		fill: $accentColor
-	}
+  svg:hover {
+    fill: $accentColor;
+  }
 }
 
 span {
-	color: $unknownColor;
+  color: $unknownColor;
+}
+
+@media screen and (max-width: 440px) {
+  .titleCharacterPage {
+    padding: 80px 0 30px 0;
+  }
 }

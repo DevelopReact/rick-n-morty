@@ -9,4 +9,8 @@
   @include FlexDirection();
   border-top: 2px solid $greyOpacityColor;
   color: $secondaryTextColor;
+
+  p {
+    text-align: center;
+  }
 }
